@@ -6,13 +6,16 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the relevant file
-with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+long_description=''
+try:
+    with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
+        long_description = f.read()
+except:
+    pass
 
 # Load the version from the local CHANGES file
-with open('CHANGES.txt', rb) as f:
+with open('CHANGES.txt', 'rb') as f:
     lines = f.readlines()
-
 version = None
 for line in lines:
     if line.strip()[0]=='v':
@@ -26,14 +29,14 @@ if not version:
     sys.exit(-1)
 
 setup(
-    name='easycython'
+    name='easycython',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
     version=version,
 
-    description='Convert .pyx to (.pyd|.so) very easily.'
+    description='Convert .pyx to (.pyd|.so) very easily.',
     long_description=long_description,
 
     # The project's main homepage.
@@ -57,6 +60,7 @@ setup(
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
+        'Programming Language :: Cython',
 
         # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: MIT License',
@@ -70,7 +74,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='cython'
+    keywords='cython',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -100,7 +104,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'easycython=easycython:main',
+            'easycython=easycython.easycython:main',
         ],
     },
 )
