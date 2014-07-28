@@ -1,5 +1,5 @@
 # Always prefer setuptools over distutils
-from setuptools import setup, find_packages  
+from setuptools import setup, find_packages
 from codecs import open  # To use a consistent encoding
 from os import path
 import sys
@@ -7,7 +7,7 @@ import sys
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the relevant file
-long_description=''
+long_description = ''
 try:
     with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
         long_description = f.read()
@@ -15,14 +15,16 @@ except:
     pass
 
 # Load the version from the local CHANGES file
+# The first line with format "vX.X.X, <blah>" is used.
 with open('CHANGES.txt', 'r') as f:
     lines = f.readlines()
 version = None
 for line in lines:
-    if line.strip()[0]=='v':
+    if line.strip()[0] == 'v':
         entries = line.split(',')
         if len(entries) > 1:
-            version = entries[0].strip()[1:] # ignore the leading 'v'
+            version = entries[0].strip()[1:]  # ignore the leading 'v'
+            break
 
 if not version:
     print('Could not find a suitable "latest" version in CHANGES.txt.')
@@ -81,11 +83,11 @@ setup(
     # simple. Or you can use find_packages().
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
 
-    # List run-time dependencies here.  These will be installed by pip when your
-    # project is installed. For an analysis of "install_requires" vs pip's
-    # requirements files see:
+    # List run-time dependencies here. These will be installed by pip
+    # when your project is installed. For an analysis of "install_requires"
+    # vs pip's requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-    install_requires=['cython','numpy'],
+    install_requires=['cython', 'numpy'],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
