@@ -1,1 +1,2 @@
-v1.0.0, 6-7-2014 -- Initial release.
+v1.0.1, 29-07-2014 -- Fixes from @nadavhoresh.
+v1.0.0, 06-07-2014 -- Initial release.
