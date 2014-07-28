@@ -2,6 +2,7 @@
 from setuptools import setup, find_packages  
 from codecs import open  # To use a consistent encoding
 from os import path
+import sys
 
 here = path.abspath(path.dirname(__file__))
 
@@ -14,7 +15,7 @@ except:
     pass
 
 # Load the version from the local CHANGES file
-with open('CHANGES.txt', 'rb') as f:
+with open('CHANGES.txt', 'r') as f:
     lines = f.readlines()
 version = None
 for line in lines:
