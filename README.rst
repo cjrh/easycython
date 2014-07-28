@@ -13,11 +13,11 @@ files. Example::
 
 `pip install easycython` will automatically create an
 executable script in your `Scripts/` folder, so you
-should be able to simply
+should be able to simply::
 
     $ easycython myext.pyx
 
-or even
+or even::
 
     $ easycython *.pyx
 
