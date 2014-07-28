@@ -15,11 +15,11 @@ files. Example::
 executable script in your `Scripts/` folder, so you
 should be able to simply
 
-	$ easycython myext.pyx
+    $ easycython myext.pyx
 
 or even
 
-	$ easycython *.pyx
+    $ easycython *.pyx
 
 Note that:
 
