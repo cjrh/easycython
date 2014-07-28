@@ -1,2 +1,4 @@
+v1.0.3, 29-07-2014 -- Improved description (argh!)
+v1.0.2, 29-07-2014 -- Improved readme.
 v1.0.1, 29-07-2014 -- Fixes from @nadavhoresh.
 v1.0.0, 06-07-2014 -- Initial release.
