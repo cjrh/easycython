@@ -1,8 +1,11 @@
 .. image:: https://travis-ci.org/cjrh/easycython.svg?branch=master
-    :target: https://travis-ci.org/cjrh/easycython
+   :target: https://travis-ci.org/cjrh/easycython
 
 .. image:: https://coveralls.io/repos/cjrh/easycython/badge.png
-  :target: https://coveralls.io/r/cjrh/easycython
+   :target: https://coveralls.io/r/cjrh/easycython
+
+.. image:: https://ci.appveyor.com/api/projects/status/23heqrp96f6ftmsr/branch/master
+   :https://ci.appveyor.com/project/cjrh/easycython/branch/master
 
 ==========
 easycython
@@ -39,5 +42,4 @@ Note that:
   C code with a debugger.
 
 These things above could all be made optional. I'm considering 
-using the `click` library for the CLI interface (hint: pull requests
-welcome).
+using the `begins` library for the CLI interface.
