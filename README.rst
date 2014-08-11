@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/cjrh/easycython.svg?branch=master)](https://travis-ci.org/cjrh/easycython)
+
+[![Coverage Status](https://coveralls.io/repos/cjrh/easycython/badge.png)](https://coveralls.io/r/cjrh/easycython)
+
 ==========
 easycython
 ==========
