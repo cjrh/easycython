@@ -4,8 +4,8 @@
 .. image:: https://coveralls.io/repos/cjrh/easycython/badge.png
    :target: https://coveralls.io/r/cjrh/easycython
 
-.. image:: https://ci.appveyor.com/api/projects/status/23heqrp96f6ftmsr/branch/master
-   :target https://ci.appveyor.com/project/cjrh/easycython/branch/master
+.. image:: https://ci.appveyor.com/api/projects/status/23heqrp96f6ftmsr
+   :target https://ci.appveyor.com/project/cjrh/easycython
 
 ==========
 easycython
