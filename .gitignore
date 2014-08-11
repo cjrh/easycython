@@ -1,0 +1,4 @@
+**/build
+**/dist
+**/easycython.egg-info/
+tests/test01.html
