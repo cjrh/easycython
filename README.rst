@@ -5,7 +5,7 @@
    :target: https://coveralls.io/r/cjrh/easycython
 
 .. image:: https://ci.appveyor.com/api/projects/status/23heqrp96f6ftmsr/branch/master
-   :https://ci.appveyor.com/project/cjrh/easycython/branch/master
+   :target https://ci.appveyor.com/project/cjrh/easycython/branch/master
 
 ==========
 easycython
