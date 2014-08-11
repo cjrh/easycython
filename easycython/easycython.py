@@ -50,10 +50,10 @@ def main():
     import Cython.Compiler.Options
     Cython.Compiler.Options.annotate = True
 
-    # Createe module objects
+    # Create module objects
     ext_modules = []
-    for n,f in extensions:
-        obj = Extension(n, [f], extra_compile_args=["-O2","-march=native"]) 
+    for n, f in extensions:
+        obj = Extension(n, [f], extra_compile_args=["-O2", "-march=native"]) 
         ext_modules.append(obj)
 
     setup(
