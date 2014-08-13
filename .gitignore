@@ -1,4 +1,8 @@
 **/build
+build/
 **/dist
+dist/
 **/easycython.egg-info/
+easycython.egg-info/
+*~
 tests/test01.html
