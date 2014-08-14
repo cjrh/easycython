@@ -37,15 +37,21 @@ IF "%PLATFORM%"=="x64" (
 
 REM Download the miniconda distribution using the system python 2.7
 IF NOT EXIST %MINICONDA% (
+    ECHO "Downloading %MINICONDA%..."
     python.exe appveyor/dlfile.py http://repo.continuum.io/miniconda/%MINICONDA%
+    ECHO "Done."
 )
 REM Perform a silent install of miniconda
+ECHO Perform a silent install of miniconda
 %MINICONDA% /InstallationType=AllUsers /S /AddToPath=1 /RegisterPython=0 /D=%PYDIR%
+ECHO "Done."
 REM Alias conda
-SET PATH=%PYDIR%;%PYDIR%\Scripts;%PATH%
-SET CONDACMD=%PYDIR%\Scripts\conda.exe
+SET PATH=%PYDIR%;%PYDIR%/Scripts;%PATH%
+SET CONDACMD=%PYDIR%/Scripts/conda.exe
 REM Create required conda env
+ECHO Create required conda env
 %CONDACMD% create --yes -f -n testenv python=%PYTHON_VERSION% numpy cython pip pytest setuptools
+ECHO "Done."
 IF "%PYTHON_VERSION%"== "2.6" (
     %CONDACMD% install  --yes -f -p %PYDIR%\envs\testenv argparse py
 )
