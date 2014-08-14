@@ -3,7 +3,8 @@ SET PATH=%PYDIR%\envs\testenv;%PYDIR%\envs\testenv\Scripts;%PATH%
 ECHO Inside runtests.cmd
 ECHO This is the path:
 ECHO %PATH%
-ECHO python -V
+python.exe -V
+dir %PYDIR%
 REM Run tests
-python setup.py develop
+python.exe setup.py develop
 py.test
