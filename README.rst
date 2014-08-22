@@ -7,12 +7,6 @@
 .. image:: https://ci.appveyor.com/api/projects/status/23heqrp96f6ftmsr
    :target: https://ci.appveyor.com/project/cjrh/easycython
 
-.. raw:: html
-
-    <script data-gittip-username="caleb_hattingh"
-        data-gittip-widget="button"
-        src="//gttp.co/v1.js">
-    </script>
 
 ==========
 easycython
