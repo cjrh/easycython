@@ -47,12 +47,17 @@ REM Perform a silent install of miniconda
 ECHO Perform a silent install of miniconda
 %MINICONDA% /InstallationType=AllUsers /S /AddToPath=1 /RegisterPython=0 /D=%PYDIR%
 ECHO "Done."
+ECHO
+ECHO Path:
+ECHO %PATH%
 REM Alias conda
-SET PATH=%PYDIR%;%PYDIR%/Scripts;%PATH%
-SET CONDACMD=%PYDIR%/Scripts/conda.exe
+SET PATH=%PYDIR%;%PYDIR%\Scripts;%PATH%
+SET PYTHONHOME=%PYDIR%
+SET PYTHONPATH=%PYDIR%\Lib
+SET CONDACMD=%PYDIR%\Scripts\conda.exe
 REM Create required conda env
 ECHO Create required conda env
-%CONDACMD% create --quiet --yes -f -n testenv python=%PYTHON_VERSION% numpy cython pip pytest setuptools
+%CONDACMD% create --quiet --yes -f -n testenv python=%PYTHON_VERSION% numpy cython pip py pytest setuptools
 ECHO "Done."
 IF "%PYTHON_VERSION%"== "2.6" (
     %CONDACMD% install  --yes -f -p %PYDIR%\envs\testenv argparse py
