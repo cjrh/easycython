@@ -24,6 +24,7 @@ init:
   - "ECHO %PYDIR% %PYTHON_VERSION%"
 
 install:
+  - '"C:\Program Files\Microsoft SDKs\Windows\v7.0\Bin\SetEnv.cmd" /x64'
   - "appveyor/install.cmd"
 
 build: false  # Not a C# project, build stuff at the test step instead.

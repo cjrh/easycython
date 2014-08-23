@@ -14,4 +14,4 @@ REM Run tests
 ECHO Installing package via "python.exe setup.py develop":
 python.exe setup.py develop
 ECHO Running tests:
-CALL py.test
+%PYDIR%\envs\testenv\Scripts\py.test tests
