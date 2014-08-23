@@ -1,5 +1,8 @@
 REM Augment the path so that the correct python gets used.
-SET PATH=%PYDIR%\envs\testenv;%PYDIR%\envs\testenv\Scripts;%PATH%
+SET PATHENV=%PYDIR%\envs\testenv
+SET PATH=%PATHENV%;%PATHENV%\Scripts;%PATH%
+SET PYTHONHOME=%PYDIR%
+SET PYTHONPATH=%PYDIR%\Lib
 ECHO Inside runtests.cmd
 ECHO This is the path:
 ECHO %PATH%
@@ -9,9 +12,9 @@ ECHO Contents of the envs subfolder:
 dir %PYDIR%\envs
 ECHO These are the contents of the python scripts folder:
 ECHO (only starting with p*...)
-dir %PYDIR%\envs\testenv\Scripts\p*
+dir %PATHENV%\Scripts\p*
 REM Run tests
 ECHO Installing package via "python.exe setup.py develop":
-python.exe setup.py develop
+%PATHENV%\python.exe setup.py develop
 ECHO Running tests:
-%PYDIR%\envs\testenv\Scripts\py.test tests
+%PATHENV%\Scripts\py.test tests

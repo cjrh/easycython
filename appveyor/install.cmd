@@ -60,5 +60,5 @@ ECHO Create required conda env
 %CONDACMD% create --quiet --yes -f -n testenv python=%PYTHON_VERSION% numpy cython pip py pytest setuptools
 ECHO "Done."
 IF "%PYTHON_VERSION%"== "2.6" (
-    %CONDACMD% install  --yes -f -p %PYDIR%\envs\testenv argparse py
+    %CONDACMD% install --quiet --yes -f -p %PYDIR%\envs\testenv argparse py
 )
