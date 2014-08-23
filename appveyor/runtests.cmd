@@ -15,6 +15,8 @@ ECHO (only starting with p*...)
 dir %PATHENV%\Scripts\p*
 REM Run tests
 ECHO Installing package via "python.exe setup.py develop":
-%PATHENV%\python.exe setup.py develop
+REM %PATHENV%\python.exe setup.py develop
+%PATHENV%\python.exe setup.py install
 ECHO Running tests:
-%PATHENV%\Scripts\py.test tests
+python.exe -m pytest tests
+REM %PATHENV%\Scripts\py.test tests
