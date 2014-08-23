@@ -22,14 +22,14 @@ IF %MAJOR_PYTHON_VERSION% == "2" (
 IF "%PLATFORM%"=="x64" (
     ECHO Configuring environment to build with MSVC on a 64bit architecture
     ECHO Using Windows SDK %WINDOWS_SDK_VERSION%
-    cmd.exe "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /x64 /release
+    CALL "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /x64 /release
     SET DISTUTILS_USE_SDK=1
     SET MSSdk=1
     REM Alias the x64 miniconda file
     SET MINICONDA=Miniconda-3.6.0-Windows-x86_64.exe
 ) ELSE (
     ECHO Using Windows SDK %WINDOWS_SDK_VERSION%
-    "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /x86 /release
+    CALL "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /x86 /release
     REM Alias the x86 miniconda file
     SET MINICONDA=Miniconda-3.6.0-Windows-x86.exe
     REM TODO Ask continuum to use a "latest" URL for the most recent miniconda
@@ -50,7 +50,7 @@ SET PATH=%PYDIR%;%PYDIR%/Scripts;%PATH%
 SET CONDACMD=%PYDIR%/Scripts/conda.exe
 REM Create required conda env
 ECHO Create required conda env
-%CONDACMD% create --yes -f -n testenv python=%PYTHON_VERSION% numpy cython pip pytest setuptools
+%CONDACMD% create --quiet --yes -f -n testenv python=%PYTHON_VERSION% numpy cython pip pytest setuptools
 ECHO "Done."
 IF "%PYTHON_VERSION%"== "2.6" (
     %CONDACMD% install  --yes -f -p %PYDIR%\envs\testenv argparse py

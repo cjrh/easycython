@@ -6,3 +6,6 @@ dist/
 easycython.egg-info/
 *~
 tests/test01.html
+*.pyc
+*.pyd
+*.exe
