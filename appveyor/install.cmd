@@ -22,7 +22,8 @@ IF %MAJOR_PYTHON_VERSION% == "2" (
 IF "%PLATFORM%"=="x64" (
     ECHO Configuring environment to build with MSVC on a 64bit architecture
     ECHO Using Windows SDK %WINDOWS_SDK_VERSION%
-    CMD /E:ON /V:ON /K "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /Release /x64
+    ECHO "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /Release /x64
+    CMD /E:ON /V:ON /C "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /Release /x64
     ECHO Windows SDK enabled.
     SET DISTUTILS_USE_SDK=1
     SET MSSdk=1
