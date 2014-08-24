@@ -46,7 +46,8 @@ IF NOT EXIST %MINICONDA% (
     python.exe appveyor/dlfile.py http://repo.continuum.io/miniconda/%MINICONDA%
     ECHO "Done."
 )
-REM Perform a silent install of miniconda
+
+ECHO ========================================================
 ECHO Perform a silent install of miniconda
 %MINICONDA% /InstallationType=AllUsers /S /AddToPath=1 /RegisterPython=0 /D=%PYDIR%
 ECHO "Done."
@@ -58,10 +59,14 @@ SET PATH=%PYDIR%;%PYDIR%\Scripts;%PATH%
 SET PYTHONHOME=%PYDIR%
 SET PYTHONPATH=%PYDIR%\Lib
 SET CONDACMD=%PYDIR%\Scripts\conda.exe
-REM Create required conda env
+ECHO ========================================================
 ECHO Create required conda env
 %CONDACMD% create --quiet --yes -f -n testenv python=%PYTHON_VERSION% numpy cython pip py pytest setuptools
 ECHO "Done."
 IF "%PYTHON_VERSION%"== "2.6" (
     %CONDACMD% install --quiet --yes -f -p %PYDIR%\envs\testenv argparse py
 )
+ECHO ========================================================
+ECHO Installing pip-only packages
+%PYDIR%\envs\testenv\Scripts\pip install wheel
+ECHO Done.
