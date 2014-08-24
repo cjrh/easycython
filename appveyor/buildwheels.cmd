@@ -3,6 +3,7 @@ SET PATHENV=%PYDIR%\envs\testenv
 SET PATH=%PATHENV%;%PATHENV%\Scripts;%PATH%
 SET PYTHONHOME=
 SET PYTHONPATH=
+CALL "appveyor\createenv.cmd"
 :: Replicate cmd option /V:ON (delayed expansion - required)
 setlocal EnableDelayedExpansion
 CALL "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /Release /x64

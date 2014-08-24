@@ -3,6 +3,7 @@ SET PATHENV=%PYDIR%\envs\testenv
 SET PATH=%PATHENV%;%PATHENV%\Scripts;%PATH%
 SET PYTHONHOME=
 SET PYTHONPATH=
+CALL "appveyor\createenv.cmd"
 ECHO Inside runtests.cmd
 ECHO This is the path:
 ECHO %PATH%
