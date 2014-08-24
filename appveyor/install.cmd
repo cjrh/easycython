@@ -5,7 +5,6 @@ REM
 REM More details at:
 REM https://github.com/cython/cython/wiki/64BitCythonExtensionsOnWindows
 
-setlocal EnableDelayedExpansion
 ECHO Setting up the required environment variables and paths:
 CALL "appveyor\createenv.cmd"
 ECHO ...Done.
@@ -23,13 +22,12 @@ SET
 ECHO ========================================================
 ECHO Perform a silent install of miniconda
 %MINICONDA% /InstallationType=AllUsers /S /AddToPath=1 /RegisterPython=0 /D=%PYDIR%
-ECHO "Done."
+ECHO Done.
 ECHO
 ECHO Path:
 ECHO %PATH%
 REM Alias conda
 SET PATH=%PYDIR%;%PYDIR%\Scripts;%PATH%
-SET CONDACMD=%PYDIR%\Scripts\conda.exe
 ECHO ========================================================
 ECHO Current list of environment variables:
 SET
@@ -41,9 +39,6 @@ IF "%PYTHON_VERSION%"== "2.6" (
     %CONDACMD% install --quiet --yes -f -p %PYDIR%\envs\testenv argparse py
 )
 ECHO ========================================================
-ECHO Current list of environment variables:
-SET
-ECHO ========================================================
-ECHO Installing pip-only packages
-%PYDIR%\envs\testenv\Scripts\pip install wheel
+ECHO Installing pip-only packages (inside testenv)
+%PATHENV%\Scripts\pip install wheel
 ECHO Done.
