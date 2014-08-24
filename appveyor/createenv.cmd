@@ -16,22 +16,16 @@ ECHO Major Python version is %MAJOR_PYTHON_VERSION%, using Windows SDK %WINDOWS_
 ECHO ========================================================
 
 IF "%PLATFORM%"=="x64" (
-    ECHO Configuring environment to build with MSVC on a 64bit architecture
-    setlocal EnableDelayedExpansion
     CALL "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /Release /x64
-    endlocal
     SET DISTUTILS_USE_SDK=1
     SET MSSdk=1
     SET MINICONDA=Miniconda-3.6.0-Windows-x86_64.exe
 ) ELSE (
-    setlocal EnableDelayedExpansion
     CALL "C:\Program Files\Microsoft SDKs\Windows\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /Release /x86
-    endlocal
     SET MINICONDA=Miniconda-3.6.0-Windows-x86.exe
     REM TODO Ask continuum to use a "latest" URL for the most recent miniconda
 )
 ECHO Windows SDK enabled.
-cl.exe
 ECHO ========================================================
 SET CONDACMD=%PYDIR%\Scripts\conda.exe
 SET PATHENV=%PYDIR%\envs\testenv

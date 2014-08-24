@@ -3,7 +3,7 @@ SET PATHENV=%PYDIR%\envs\testenv
 SET PATH=%PATHENV%;%PATHENV%\Scripts;%PATH%
 SET PYTHONHOME=
 SET PYTHONPATH=
-setlocal EnableDelayedExpansion
+SETLOCAL EnableDelayedExpansion
 CALL "appveyor\createenv.cmd"
 ECHO ========================================================
 REM Make the wheel

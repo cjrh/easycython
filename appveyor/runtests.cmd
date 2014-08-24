@@ -1,3 +1,4 @@
+SETLOCAL EnableDelayedExpansion
 ECHO Inside runtests.cmd
 REM Augment the path so that the correct python gets used.
 SET PATHENV=%PYDIR%\envs\testenv

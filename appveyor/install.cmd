@@ -5,6 +5,9 @@ REM
 REM More details at:
 REM https://github.com/cython/cython/wiki/64BitCythonExtensionsOnWindows
 
+:: This must be enabled, otherwise %MINICONDA% and other variables will
+:: not get substituted. They are set inside "createenv.cmd"
+SETLOCAL EnableDelayedExpansion
 ECHO Setting up the required environment variables and paths:
 CALL "appveyor\createenv.cmd"
 ECHO ...Done.
