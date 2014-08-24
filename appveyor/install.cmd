@@ -5,7 +5,7 @@ REM
 REM More details at:
 REM https://github.com/cython/cython/wiki/64BitCythonExtensionsOnWindows
 
-@ECHO OFF
+::@ECHO OFF
 setlocal EnableDelayedExpansion
 SET PYTHONHOME=
 SET PYTHONPATH=
@@ -48,6 +48,9 @@ IF NOT EXIST %MINICONDA% (
 )
 
 ECHO ========================================================
+ECHO Current list of environment variables:
+SET
+ECHO ========================================================
 ECHO Perform a silent install of miniconda
 %MINICONDA% /InstallationType=AllUsers /S /AddToPath=1 /RegisterPython=0 /D=%PYDIR%
 ECHO "Done."
@@ -56,9 +59,10 @@ ECHO Path:
 ECHO %PATH%
 REM Alias conda
 SET PATH=%PYDIR%;%PYDIR%\Scripts;%PATH%
-SET PYTHONHOME=%PYDIR%
-SET PYTHONPATH=%PYDIR%\Lib
 SET CONDACMD=%PYDIR%\Scripts\conda.exe
+ECHO ========================================================
+ECHO Current list of environment variables:
+SET
 ECHO ========================================================
 ECHO Create required conda env
 %CONDACMD% create --quiet --yes -f -n testenv python=%PYTHON_VERSION% numpy cython pip py pytest setuptools
@@ -66,6 +70,9 @@ ECHO "Done."
 IF "%PYTHON_VERSION%"== "2.6" (
     %CONDACMD% install --quiet --yes -f -p %PYDIR%\envs\testenv argparse py
 )
+ECHO ========================================================
+ECHO Current list of environment variables:
+SET
 ECHO ========================================================
 ECHO Installing pip-only packages
 %PYDIR%\envs\testenv\Scripts\pip install wheel
