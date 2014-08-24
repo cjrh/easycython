@@ -5,6 +5,10 @@ REM
 REM More details at:
 REM https://github.com/cython/cython/wiki/64BitCythonExtensionsOnWindows
 
+@ECHO OFF
+setlocal EnableDelayedExpansion
+SET PYTHONHOME=
+SET PYTHONPATH=
 
 SET WIN_SDK_ROOT=C:\Program Files\Microsoft SDKs\Windows
 SET MAJOR_PYTHON_VERSION="%PYTHON_VERSION:~0,1%"
