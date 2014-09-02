@@ -47,22 +47,25 @@ def main():
     from distutils.core import setup
     from distutils.extension import Extension
     from Cython.Distutils import build_ext
+    from Cython.Build import cythonize
     import Cython.Compiler.Options
     Cython.Compiler.Options.annotate = True
 
     # Create module objects
     ext_modules = []
     for n, f in extensions:
-        obj = Extension(n, [f], extra_compile_args=["-O2", "-march=native"]) 
+        obj = Extension(n, [f], extra_compile_args=["-O2", "-march=native"])
         ext_modules.append(obj)
 
     setup(
         cmdclass = {'build_ext': build_ext},
-        ext_modules = ext_modules,
-        include_dirs=[numpy.get_include()]
+        include_dirs=[numpy.get_include()],
+        ext_modules = cythonize([f for n,f in extensions]),
     )
 
     # Cleanup: delete intermediate C files.
     #for n, f in extensions:
     #    if os.path.exists(n+'.c'):
     #        os.remove(n+'.c')
+if __name__ == '__main__':
+    main()
