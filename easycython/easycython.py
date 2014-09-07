@@ -1,4 +1,4 @@
-from __future__ import print_function, division, absolute_import
+from __future__ import print_function, division
 import sys
 import os
 from os.path import splitext
@@ -60,7 +60,9 @@ def main():
     setup(
         cmdclass = {'build_ext': build_ext},
         include_dirs=[numpy.get_include()],
-        ext_modules = cythonize([f for n,f in extensions]),
+        # ext_modules = cythonize([f for n,f in extensions]),
+        ext_modules = cythonize(ext_modules),
+        # ext_modules = ext_modules
     )
 
     # Cleanup: delete intermediate C files.
