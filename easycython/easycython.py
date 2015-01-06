@@ -44,6 +44,7 @@ def main():
     # hacking the command line.
     sys.argv = [sys.argv[0], 'build_ext', '--inplace']
 
+    import setuptools
     from distutils.core import setup
     from distutils.extension import Extension
     from Cython.Distutils import build_ext
