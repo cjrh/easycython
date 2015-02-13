@@ -53,7 +53,9 @@ def main(annotation=True, numpy_includes=True, *filenames):
     # Create module objects
     ext_modules = []
     for n, f in extensions:
-        obj = Extension(n, [f], extra_compile_args=["-O2", "-march=native"])
+        module_name = os.path.basename(n)
+        obj = Extension(module_name, [f], 
+                extra_compile_args=["-O2", "-march=native"])
         ext_modules.append(obj)
 
     include_dirs = []
