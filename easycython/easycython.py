@@ -17,6 +17,7 @@ def main(annotation=True, numpy_includes=True, debugmode=False, *filenames):
     #          if splitext(f)[1].lower() in ['.pyx', '.py', 'pyw']]
     logging.info('Given filenames = ' + '\n'.join(filenames))
     logging.info('Current dir contents: \n    ' + '\n    '.join(os.listdir('.')))
+    # This is a beautiful, beautiful line. This is why I use Python.
     files = [f for g in filenames for f in glob(g)] 
     logging.info('Detected files: \n    ' + '\n    '.join(files))
 
@@ -34,7 +35,7 @@ def main(annotation=True, numpy_includes=True, debugmode=False, *filenames):
     # Checking for missing files
     missing = [f for n, f in extensions if not os.path.exists(f)]
     if missing:
-        logging.error('One or more given files were missing:')
+        logging.error('These files were missing:')
         for f in missing:
             logging.error('    {}'.format(f))
         logging.error('Aborting.')
@@ -55,11 +56,13 @@ def main(annotation=True, numpy_includes=True, debugmode=False, *filenames):
     # Create module objects
     ext_modules = []
     for n, f in extensions:
+        # The name must be plain, no path
         module_name = os.path.basename(n)
         obj = Extension(module_name, [f], 
                 extra_compile_args=["-O2", "-march=native"])
         ext_modules.append(obj)
 
+    # Extra include folders. Mainly for numpy.
     include_dirs = []
     if numpy_includes:
         try:
@@ -71,10 +74,8 @@ def main(annotation=True, numpy_includes=True, debugmode=False, *filenames):
     setup(
         cmdclass = {'build_ext': build_ext},
         include_dirs=include_dirs,
-        # ext_modules = cythonize([f for n,f in extensions]),
         ext_modules = cythonize(ext_modules),
-        # ext_modules = ext_modules
-    )
+        )
 
     # Cleanup: delete intermediate C files.
     #for n, f in extensions:
