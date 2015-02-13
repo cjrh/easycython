@@ -6,10 +6,12 @@ from os.path import splitext
 import begin
 from glob import glob
 
-logging.getLogger().setLevel(logging.INFO)
 
 @begin.start
-def main(annotation=True, numpy_includes=True, *filenames):
+def main(annotation=True, numpy_includes=True, debugmode=False, *filenames):
+    if debugmode:
+        logging.getLogger().setLevel(logging.INFO)
+
     # The filename args are allowed to be globs
     # files = [f for g in filenames for f in glob(g) 
     #          if splitext(f)[1].lower() in ['.pyx', '.py', 'pyw']]
