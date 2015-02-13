@@ -27,6 +27,8 @@ def build(request):
     # os.system('python ../easycython/easycython.py test01.pyx > output.log')
     os.chdir('..')
     print('Done.')
+    print('Current working dir: ' + os.getcwd())
+    print('Contents of the test folder: ' + '\n'.join(os.listdir('tests')))
 
     if sys.platform == 'win32':
         ext = '.pyd'
@@ -36,8 +38,6 @@ def build(request):
     # This doesn't work because of the renaming in PEP 3149
     #expected_module = pth('test01' + ext)
     #assert os.path.exists(expected_module)
-    # print('Current working dir: ' + os.getcwd())
-    # print('Contents of the test folder: ' + '\n'.join(os.listdir('tests')))
     # if os.path.exists('tests/output.log'):
     #     print('Contents of output.log: ' + '\n'.join(open('tests/output.log', 'r').readlines()))
     # else:

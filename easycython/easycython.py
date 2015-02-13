@@ -13,10 +13,10 @@ def main(annotation=True, numpy_includes=True, *filenames):
     # The filename args are allowed to be globs
     # files = [f for g in filenames for f in glob(g) 
     #          if splitext(f)[1].lower() in ['.pyx', '.py', 'pyw']]
+    logging.info('Given filenames = ' + '\n'.join(filenames))
+    logging.info('Current dir contents: \n    ' + '\n    '.join(os.listdir('.')))
     files = [f for g in filenames for f in glob(g)] 
-    logging.info('Detected files: ')
-    for f in files:
-        logging.info(' '*4 + f)
+    logging.info('Detected files: \n    ' + '\n    '.join(files))
 
     # Collect all the extensions to process
     extensions = []
@@ -35,7 +35,7 @@ def main(annotation=True, numpy_includes=True, *filenames):
         logging.error('One or more given files were missing:')
         for f in missing:
             logging.error('    {}'.format(f))
-        print('Aborting.')
+        logging.error('Aborting.')
         sys.exit(2)
 
     # Restore distutils command line args
