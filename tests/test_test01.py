@@ -24,7 +24,6 @@ def build(request):
     # easycython to use the begins CLI library to
     # provide a much nicer interface for cmd line args.
     os.system('easycython test01.pyx')
-    # os.system('python ../easycython/easycython.py test01.pyx > output.log')
     os.chdir('..')
     print('Done.')
     print('Current working dir: ' + os.getcwd())
@@ -49,7 +48,7 @@ def build(request):
     import test01
     def finish():
         print('Teardown build files...')
-        #del test01
+        # Can't remove the pyd!
         for ext in ['html','c']:  #,'pyd']:
             os.remove(pth('test01.' + ext))
         shutil.rmtree(pth('build'))
