@@ -6,6 +6,7 @@ from os.path import splitext
 import begin
 from glob import glob
 
+logging.getLogger().setLevel(logging.INFO)
 
 @begin.start
 def main(annotation=True, numpy_includes=True, *filenames):
