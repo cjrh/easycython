@@ -46,7 +46,7 @@ def main(annotation=True, numpy_includes=True, *filenames):
     from Cython.Distutils import build_ext
     from Cython.Build import cythonize
     import Cython.Compiler.Options
-    Cython.Compiler.Options.annotate = True
+    Cython.Compiler.Options.annotate = annotation
 
     # Create module objects
     ext_modules = []
