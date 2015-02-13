@@ -74,5 +74,3 @@ def main(annotation=True, numpy_includes=True, *filenames):
     #for n, f in extensions:
     #    if os.path.exists(n+'.c'):
     #        os.remove(n+'.c')
-if __name__ == '__main__':
-    main()
