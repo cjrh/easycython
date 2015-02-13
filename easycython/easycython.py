@@ -42,9 +42,7 @@ def main(annotation=True, numpy_includes=True, *filenames):
     # hacking the command line.
     sys.argv = [sys.argv[0], 'build_ext', '--inplace']
 
-    import setuptools
-    from distutils.core import setup
-    from distutils.extension import Extension
+    from setuptools import setup, Extension
     from Cython.Distutils import build_ext
     from Cython.Build import cythonize
     import Cython.Compiler.Options
