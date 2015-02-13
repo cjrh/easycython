@@ -54,9 +54,17 @@ def main(annotation=True, numpy_includes=True, *filenames):
         obj = Extension(n, [f], extra_compile_args=["-O2", "-march=native"])
         ext_modules.append(obj)
 
+    include_dirs = []
+    if numpy_includes:
+        try:
+            import numpy
+            include_dirs += [numpy.get_include()]
+        except:
+            logging.exception('Numpy is required, but not found. Please install it')
+
     setup(
         cmdclass = {'build_ext': build_ext},
-        include_dirs=[numpy.get_include()],
+        include_dirs=include_dirs,
         # ext_modules = cythonize([f for n,f in extensions]),
         ext_modules = cythonize(ext_modules),
         # ext_modules = ext_modules
