@@ -113,6 +113,8 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
+            # NOTE: the begins package might have modified the entry point, as
+            # per http://begins.readthedocs.org/en/latest/guide.html#entry-points
             'easycython=easycython.easycython:main.start',
         ],
     },
