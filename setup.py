@@ -113,7 +113,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'easycython=easycython.easycython:main',
+            'easycython=easycython.easycython:main.start',
         ],
     },
 )
