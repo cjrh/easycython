@@ -10,8 +10,8 @@ from glob import glob
 @begin.start
 def main(annotation=True, numpy_includes=True, *filenames):
     # The filename args are allowed to be globs
-    files = (f for g in filenames for f in glob(g) 
-             if splitext(f)[1].lower() in ['.pyx', '.py', 'pyw'])
+    files = [f for g in filenames for f in glob(g) 
+             if splitext(f)[1].lower() in ['.pyx', '.py', 'pyw']]
     logging.info('Detected files: ')
     for f in files:
         logging.info(' '*4 + f)
