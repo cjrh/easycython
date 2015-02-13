@@ -36,7 +36,7 @@ def build(request):
     #expected_module = pth('test01' + ext)
     #assert os.path.exists(expected_module)
     print('Current working dir: ' + os.getcwd())
-    print('Contents of the test folder: ' + os.listdir('tests'))
+    print('Contents of the test folder: ' + '\n'.join(os.listdir('tests')))
     if os.path.exists('tests/output.log'):
         print('Contents of output.log: ' + '\n'.join(open('tests/output.log', 'r').readlines()))
     else:
