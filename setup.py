@@ -39,7 +39,7 @@ setup(
     # http://packaging.python.org/en/latest/tutorial.html#version
     version=version,
 
-    description='Convert .pyx to (.pyd|.so) very easily.',
+    description='Convert `.pyx` to `(.pyd|.so)` very easily.',
     long_description=long_description,
 
     # The project's main homepage.
@@ -58,10 +58,13 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
+
+        'Environment :: Console',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
         'Topic :: Software Development :: Build Tools',
         'Programming Language :: Cython',
 
@@ -74,6 +77,9 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
+
+        'Topic :: Software Development :: Build Tools',
+
     ],
 
     # What does your project relate to?
@@ -87,7 +93,7 @@ setup(
     # when your project is installed. For an analysis of "install_requires"
     # vs pip's requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-    install_requires=['cython', 'numpy'],
+    install_requires=['cython', 'numpy', 'begins'],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
