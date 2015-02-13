@@ -6,36 +6,35 @@ from os.path import splitext
 import begin
 from glob import glob
 
-def main():
-    if len(sys.argv) == 1:
-        print('You must supply one or more .pyx filenames.')
-        sys.exit()
 
-    # TODO: This is poor option handling. Should be fixed.
-    if sys.argv[1].lower() == '*.pyx':
-        files = os.listdir('.')
-    else:
-        files = sys.argv[1:]
+@begin.start
+def main(annotation=True, numpy_includes=True, *filenames):
+    # The filename args are allowed to be globs
+    files = (f for g in filenames for f in glob(g) 
+             if splitext(f)[1].lower() in ['.pyx', '.py', 'pyw'])
+    logging.info('Detected files: ')
+    for f in files:
+        logging.info(' '*4 + f)
 
     # Collect all the extensions to process
     extensions = []
     for f in files:
         basename, ext = splitext(f)
-        if ext.lower() == '.pyx':
-            extensions.append((basename, f))
+        extensions.append((basename, f))
 
     # No pyx files given.
     if len(extensions) == 0:
-        print('No .pyx filenames were supplied.  Exiting.')
-        sys.exit()
+        logging.error('No valid source filenames were supplied.')
+        sys.exit(1)
 
     # Checking for missing files
     missing = [f for n, f in extensions if not os.path.exists(f)]
     if missing:
-        print('One or more given files were missing:')
+        logging.error('One or more given files were missing:')
         for f in missing:
-            print('    {}'.format(f))
+            logging.error('    {}'.format(f))
         print('Aborting.')
+        sys.exit(2)
 
     # Restore distutils command line args
     # TODO: It should be possible to specify these
