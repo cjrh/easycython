@@ -2,17 +2,17 @@
 easycython
 ==========
 
-Because writing a `setup.py` each time is painful.
+Because writing a :code:`setup.py` each time is painful.
 
-`easycython.py` is a script that will attempt to
-automatically convert one or more `.pyx` files into
-the corresponding compiled `.pyd|.so` binary modules
+:code:`easycython.py` is a script that will attempt to
+automatically convert one or more :code:`.pyx` files into
+the corresponding compiled :code:`.pyd|.so` binary modules
 files. Example::
 
     $ python easycython.py myext.pyx
 
-`pip install easycython` will automatically create an
-executable script in your `Scripts/` folder, so you
+:code:`pip install easycython` will automatically create an
+executable script in your :code:`Scripts/` folder, so you
 should be able to simply::
 
     $ easycython myext.pyx
@@ -21,17 +21,30 @@ or even::
 
     $ easycython *.pyx
 
-Note that:
+You can type::
 
-- Cython annotation (`-a`) is always-on. I find it easier to 
-  just always have the annotation available, and clean up unwanted
-  files by other means.
-- `numpy` is required, because all the work I do requires 
-  `numpy` support inside my cython extensions.
-- Compiler flags `-O2 -march=native` are automatically passed to
+    $ easycython -h
+
+to obtain the following CLI::
+
+    usage: easycython.py [-h] [--annotation] [--no-annotation] [--numpy-includes]
+                         [--no-numpy-includes]
+                         [filenames [filenames ...]]
+
+    positional arguments:
+      filenames
+
+    optional arguments:
+      -h, --help           show this help message and exit
+      --annotation
+      --no-annotation      (default: True)
+      --numpy-includes
+      --no-numpy-includes  (default: True)
+
+
+- :code:`--annotation` (default) will emit the HTML Cython annotation file.
+- :code:`--numpy-includes` (default) will add the numpy headers to the build command.
+- Compiler flags :code:`-O2 -march=native` are automatically passed to
   the compiler. I have not yet had to step through the generated
   C code with a debugger.
 
-These things above could all be made optional. I'm considering 
-using the `click` library for the CLI interface (hint: pull requests
-welcome).
