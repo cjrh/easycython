@@ -1,11 +1,10 @@
 from __future__ import print_function, division
 import sys
 import os
+import logging
 from os.path import splitext
-try:
-    import numpy
-except:
-    print('Numpy is required, but not found. Please install it')
+import begin
+from glob import glob
 
 def main():
     if len(sys.argv) == 1:
