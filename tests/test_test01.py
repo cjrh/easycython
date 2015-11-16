@@ -7,6 +7,8 @@ import os
 import sys
 import shutil
 import pytest
+import subprocess as sp
+from glob import glob
 
 
 def pth(filename):
@@ -18,12 +20,19 @@ def build(request):
     print('Attempt easycython build.')
     os.chdir('tests')
     print('Current folder: ' + os.getcwd())
+    print('Python version: ' + str(sys.version))
     # TODO Instead of putting the output here, rather
     # use a tempdir, and add the tempdir to sys.path
     # for importing for the tests.  We need to change
     # easycython to use the begins CLI library to
     # provide a much nicer interface for cmd line args.
-    os.system('easycython test01.pyx')
+    print('Running python -V:')
+    os.system('python -V')
+    print('Running `which cython`')
+    os.system('which cython')
+    print('Running easycython:')
+    # os.system('python ../easycython/easycython.py test01.pyx')
+    sp.check_call([sys.executable, '../easycython/easycython.py', 'test01.pyx'])
     os.chdir('..')
     print('Done.')
     print('Current working dir: ' + os.getcwd())
@@ -33,10 +42,10 @@ def build(request):
         ext = '.pyd'
     else:
         ext = '.so'
-
     # This doesn't work because of the renaming in PEP 3149
     #expected_module = pth('test01' + ext)
     #assert os.path.exists(expected_module)
+
     # if os.path.exists('tests/output.log'):
     #     print('Contents of output.log: ' + '\n'.join(open('tests/output.log', 'r').readlines()))
     # else:
@@ -48,13 +57,13 @@ def build(request):
     import test01
     def finish():
         print('Teardown build files...')
-        # Can't remove the pyd!
-        for ext in ['html','c']:  #,'pyd']:
-            os.remove(pth('test01.' + ext))
+        remove_files = glob('test01.*')
+        # Can't remove the pyd on Windows!
+        exclude_types = ['.pyx', '.pyd']
+        all(os.remove(fname) for fname in remove_files if os.path.splitext(fname)[1] not in exclude_types)
         shutil.rmtree(pth('build'))
         print('Done.')
     request.addfinalizer(finish)
-
     return test01
 
 
