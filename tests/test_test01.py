@@ -35,8 +35,6 @@ def build(request):
     sp.check_call([sys.executable, '../easycython/easycython.py', 'test01.pyx'])
     os.chdir('..')
     print('Done.')
-    print('Current working dir: ' + os.getcwd())
-    print('Contents of the test folder: ' + '\n'.join(os.listdir('tests')))
 
     if sys.platform == 'win32':
         ext = '.pyd'
@@ -56,11 +54,16 @@ def build(request):
 
     import test01
     def finish():
+        print()
         print('Teardown build files...')
-        remove_files = glob('test01.*')
+        remove_files = glob('tests/test01.*')
         # Can't remove the pyd on Windows!
         exclude_types = ['.pyx', '.pyd']
-        all(os.remove(fname) for fname in remove_files if os.path.splitext(fname)[1] not in exclude_types)
+        for fname in remove_files:
+            ext = os.path.splitext(fname)[1]
+            if ext in exclude_types:
+                continue
+            os.remove(fname)
         shutil.rmtree(pth('build'))
         print('Done.')
     request.addfinalizer(finish)
