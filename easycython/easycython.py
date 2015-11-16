@@ -58,7 +58,7 @@ def main(annotation=True, numpy_includes=True, debugmode=False, *filenames):
     for n, f in extensions:
         # The name must be plain, no path
         module_name = os.path.basename(n)
-        obj = Extension(module_name, [f], 
+        obj = Extension(module_name, [f],
                 extra_compile_args=["-O2", "-march=native"])
         ext_modules.append(obj)
 
