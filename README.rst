@@ -1,4 +1,4 @@
-Linux: [py27,py32,py33,py34] X [x64]:
+Linux: [py27,py33,py34,py35] X [x64]:
 
 .. image:: https://travis-ci.org/cjrh/easycython.svg?branch=master
    :target: https://travis-ci.org/cjrh/easycython
@@ -6,7 +6,7 @@ Linux: [py27,py32,py33,py34] X [x64]:
 .. image:: https://coveralls.io/repos/cjrh/easycython/badge.png
    :target: https://coveralls.io/r/cjrh/easycython
 
-Windows: [py26,py27,py33,py34] X [x86, x64]:
+Windows: [py26,py27,py33,py34,py35] X [x86, x64]:
 
 .. image:: https://ci.appveyor.com/api/projects/status/23heqrp96f6ftmsr
    :target: https://ci.appveyor.com/project/cjrh/easycython
