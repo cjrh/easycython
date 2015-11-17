@@ -1,3 +1,4 @@
+v1.0.5, 17-11-2015 -- Removed Python 3.2 support, added Python 3.5 tests, changed test execution.
 v1.0.4, 13-02-2015 -- New CLI, globbing args, removed hardcoded "pyx" filter.
 v1.0.3, 29-07-2014 -- Improved description (argh!)
 v1.0.2, 29-07-2014 -- Improved readme.
