@@ -5,27 +5,67 @@ import logging
 from os.path import splitext
 import begin
 from glob import glob
+import subprocess
 
 
 @begin.start
-def main(annotation=True, numpy_includes=True, debugmode=False, *filenames):
+def main(annotation=True, numpy_includes=True, debugmode=False,
+         make_exes: 'Files will be compiled into binary executables'=False,
+         *filenames):
     if debugmode:
         logging.getLogger().setLevel(logging.INFO)
 
     # The filename args are allowed to be globs
-    # files = [f for g in filenames for f in glob(g) 
+    # files = [f for g in filenames for f in glob(g)
     #          if splitext(f)[1].lower() in ['.pyx', '.py', 'pyw']]
     logging.info('Given filenames = ' + '\n'.join(filenames))
     logging.info('Current dir contents: \n    ' + '\n    '.join(os.listdir('.')))
     # This is a beautiful, beautiful line. This is why I use Python.
-    files = [f for g in filenames for f in glob(g)] 
+    files = [f for g in filenames for f in glob(g)]
     logging.info('Detected files: \n    ' + '\n    '.join(files))
+
 
     # Collect all the extensions to process
     extensions = []
     for f in files:
         basename, ext = splitext(f)
         extensions.append((basename, f))
+
+    if make_exes:
+        for (basename, f) in extensions:
+            x = subprocess.check_call(
+                ['cython', '--embed', '--set-python-home', f]
+            )
+            from pprint import pprint
+            from distutils import ccompiler
+            from distutils import sysconfig
+            compiler_name = ccompiler.get_default_compiler(os.name, sys.platform)
+            compiler = ccompiler.new_compiler()
+            print('Selected compiler: %s' % compiler)
+            pprint(vars(compiler))
+            # sysconfig.customize_compiler(compiler)
+            pprint(vars(compiler))
+            compiler.include_dirs += [
+                sysconfig.get_python_inc(),
+                os.path.dirname(sysconfig.get_python_inc())
+            ]
+            # compiler.library_dirs += [sysconfig.get_python_lib()]
+            # compiler.linker_so += ['-o', basename]
+            # compiler.linker_so.remove('-shared')
+            pprint(vars(compiler))
+            compiler.compile([basename + '.c'])
+            print('\n\nCompiling finished, now linking.\n\n')
+            static_python = (
+                os.path.dirname(sysconfig.get_python_lib(standard_lib=True))
+                + '/python3.5/config-3.5m/libpython3.5m.a'
+            )
+            static_python = '/usr/local/Cellar/python3/3.5.2/Frameworks/Python.framework/Versions/3.5/lib/python3.5/config-3.5m/libpython3.5m.a'
+            static_python = '/Users/calebhattingh/Documents/repos/cpythonplay/libpython3.6m.a'
+            compiler.link_executable(
+                [basename + '.o', static_python], 'main',
+            )
+            return
+
 
     # No pyx files given.
     if len(extensions) == 0:
