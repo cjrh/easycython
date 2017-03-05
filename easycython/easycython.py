@@ -10,7 +10,7 @@ import subprocess
 
 @begin.start
 def main(annotation=True, numpy_includes=True, debugmode=False,
-         make_exes: 'Files will be compiled into binary executables'=False,
+         make_exes=False,
          *filenames):
     if debugmode:
         logging.getLogger().setLevel(logging.INFO)
