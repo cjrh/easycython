@@ -24,7 +24,8 @@ ECHO Current list of environment variables:
 SET
 ECHO ========================================================
 ECHO Perform a silent install of miniconda
-%MINICONDA% /InstallationType=AllUsers /S /AddToPath=1 /RegisterPython=0 /D=%PYDIR%
+DIR
+start /wait "" %MINICONDA% /InstallationType=AllUsers /S /AddToPath=1 /RegisterPython=0 /D=%PYDIR%
 ECHO Done.
 ECHO
 ECHO Path:
