@@ -11,6 +11,8 @@ environment:
     - PYTHON_VERSION: "3.4"
 
     - PYTHON_VERSION: "3.5"
+    
+    - PYTHON_VERSION: "3.6"
 
 platform:
   - x86
