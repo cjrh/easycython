@@ -7,7 +7,8 @@ easycython
 Status
 ------
 
-Linux:
+Linux
+~~~~~
 
 =====  =====  =====  =====  =====
  x64    2.7    3.4    3.5    3.6
@@ -19,7 +20,8 @@ Linux:
 .. image:: https://coveralls.io/repos/cjrh/easycython/badge.png
    :target: https://coveralls.io/r/cjrh/easycython
 
-Windows:
+Windows
+~~~~~~~
 
 =====  =====  =====  =====  =====
  x86    2.7    3.4    3.5    3.6
