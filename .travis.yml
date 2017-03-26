@@ -4,14 +4,13 @@ python:
     - "3.4"
     - "3.5"
     - "3.6"
-# Dependencies
-install: 
+    - "nightly"
+install:
     - "pip install ."
     - "pip install -r requirements.txt"
     - "pip install pytest-cov"
     - "pip install coveralls"
-# Test command
-script: 
+script:
     py.test --cov easycython tests/
 after_success:
     coveralls
