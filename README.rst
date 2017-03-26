@@ -1,4 +1,17 @@
-Linux: [py27,py33,py34,py35] X [x64]:
+==========
+easycython
+==========
+
+*Because writing a setup.py each time is painful.*
+
+Status
+------
+
+Linux:
+
+=====  =====  =====  =====  =====
+ x64    2.7    3.4    3.5    3.6
+=====  =====  =====  =====  =====
 
 .. image:: https://travis-ci.org/cjrh/easycython.svg?branch=master
    :target: https://travis-ci.org/cjrh/easycython
@@ -6,17 +19,18 @@ Linux: [py27,py33,py34,py35] X [x64]:
 .. image:: https://coveralls.io/repos/cjrh/easycython/badge.png
    :target: https://coveralls.io/r/cjrh/easycython
 
-Windows: [py26,py27,py33,py34,py35] X [x86, x64]:
+Windows:
+
+=====  =====  =====  =====  =====
+ x86    2.7    3.4    3.5    3.6
+ x64    2.7    3.4    3.5    3.6
+=====  =====  =====  =====  =====
 
 .. image:: https://ci.appveyor.com/api/projects/status/23heqrp96f6ftmsr
    :target: https://ci.appveyor.com/project/cjrh/easycython
 
-
-==========
-easycython
-==========
-
-Because writing a :code:`setup.py` each time is painful.
+Introduction
+------------
 
 :code:`easycython.py` is a script that will attempt to
 automatically convert one or more :code:`.pyx` files into
