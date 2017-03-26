@@ -39,7 +39,7 @@ setup(
     # http://packaging.python.org/en/latest/tutorial.html#version
     version=version,
 
-    description='Compile .pyx to (.pyd|.so) very easily.',
+    description='$ easycython mylib.pyx ---> mylib.so',
     long_description=long_description,
 
     # The project's main homepage.
