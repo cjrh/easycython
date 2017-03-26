@@ -1,5 +1,9 @@
 environment:
 
+  username: cjrh
+  password:
+    secure: MYZ6oC04eTIab1NvjVE4iIIisKCrZh7XXvOx4sZLqGM=
+
   matrix:
 
     - PYTHON: "C:\\Python27"
@@ -27,3 +31,12 @@ artifacts:
 
 #on_success:
 #  - TODO: upload the content of dist/*.whl to a public wheelhouse
+#
+
+deploy_script:
+  - "echo [pypi] > %USERPROFILE%\\.pypirc"
+  - "echo username: %username% > %USERPROFILE%\\.pypirc"
+  - "echo password: %password% > %USERPROFILE%\\.pypirc"
+  - "%PYTHON%\\python.exe setup.py bdist_wheel"
+  - "%PYTHON%\\python.exe -m pip install twine"
+  - "%PYTHON%\\python.exe -m twine upload dist/*"
