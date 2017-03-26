@@ -39,7 +39,7 @@ setup(
     # http://packaging.python.org/en/latest/tutorial.html#version
     version=version,
 
-    description='Convert `.pyx` to `(.pyd|.so)` very easily.',
+    description='Compile .pyx to (.pyd|.so) very easily.',
     long_description=long_description,
 
     # The project's main homepage.
