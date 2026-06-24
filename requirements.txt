@@ -1,4 +1,4 @@
 numpy>=2.5.0
-cython>=3.2.5
+cython>=3.2.6
 begins>=0.9
 
